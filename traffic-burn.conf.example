@@ -1,0 +1,25 @@
+# Traffic-Burnig 配置示例
+# 复制为 /etc/traffic-burn.conf 后按需修改，或直接运行:
+#   traffic-burn init-config --quota 20GB --quota-period daily --schedule 01:00-07:00 --max-download 30 --max-upload 10 --force
+
+# 流量配额。十进制：1 GB = 1000 MB。也可用 GiB。留空或 0 表示不限制。
+QUOTA="20GB"
+# run=本次进程；daily=每个自然日；monthly=每个自然月
+QUOTA_PERIOD="daily"
+# 允许燃烧的本地时间段，逗号分隔，支持跨夜。留空表示全天。
+SCHEDULE="01:00-07:00"
+# 单次启动最长运行时间。0 表示直到配额完成或手动停止。
+DURATION="0"
+# 最大下行 / 上行速度，单位 Mbps。0 表示不限制。
+MAX_DOWNLOAD_MBPS="30"
+MAX_UPLOAD_MBPS="10"
+# 两轮官方测速之间的间隔秒数
+INTERVAL="10"
+# Ookla 服务器 ID，留空则自动选择
+SERVER_ID=""
+# 绑定网卡，留空则走系统默认路由
+INTERFACE=""
+# 官方 speedtest 可执行文件，留空则自动查找
+SPEEDTEST_BIN=""
+LOG_FILE="/var/log/traffic-burn.log"
+STATE_FILE="/var/lib/traffic-burn/state"
